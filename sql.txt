@@ -1,0 +1,12 @@
+database ExpressPassword
+
+create table Enc_Pass(
+    userID integer,
+    passwords text
+);
+
+create table User_Pass(
+    userID integer primary key auto_increment,
+    userName text,
+    userMPass text
+);
