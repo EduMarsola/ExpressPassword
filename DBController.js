@@ -1,6 +1,7 @@
 import sql from 'mysql2'
 import dotenv from 'dotenv'
 
+
 dotenv.config()
 
 class db{
@@ -12,15 +13,15 @@ class db{
     })
     async Input(userName, password)
     {
-        this.con.query(`insert into Enc_Pass (userID, passwords) values (?, ?)`, this.NameToID(userName), this.IntegratePassword(password)).promisse()
+        this.con.query(`insert into Enc_Pass (userID, passwords) values (?, ?)`, this.NameToID(userName), this.IntegratePassword(password)).promise()
     }
     async NameToID(userName)
     {
-        return this.con.query(`select userID from User_Pass where userName = ?`, userName).promisse()
+        return await this.con.promise().query(`select userID from User_Pass where userName = ?`, userName)
     }
     async List(userName)
     {
-        return this.con.query(`select passwords from Enc_Pass where userID = ?`, this.NameToID(userName)).promisse()
+        return await this.con.promise().query(`select passwords from Enc_Pass where userID = ?`, this.NameToID(userName))
     }
     async IntegratePassword(userID, newPassword)
     {

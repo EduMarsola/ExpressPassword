@@ -1,12 +1,14 @@
-import {db} from './DBController.js'
 
-getPassword()
+function GetPassword()
 {
-    const passwordText = db.List()
-    document.getElementById("passwordLister").innerText = passwordText
+    let passwordText = "teste"
+    //document.getElementById("passwordLister").innerHTML += InsertPassword() + "<br>"
+    document.getElementById("passwordLister").innerHTML += fetch("no-cors", "http://localhost:1500")
+        .then(res => res.json()).then(data => console.log(data))
+    
 }
 
-insertPassword()
+function InsertPassword()
 {
-    db.Input("test", "cleb")
+    return "texto"
 }
