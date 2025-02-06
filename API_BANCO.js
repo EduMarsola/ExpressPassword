@@ -5,10 +5,10 @@ const data = new db();
 const server = fastify()
 
 server.get('/', () =>{
-    return [{"text": "deu bom"}]
+    return JSON.parse({ text: "deu bom"})
 })
-server.get('/list', async() =>{
-    return await data.List("test")
+server.get('/list', async(reply) =>{
+    return reply.body = await data.NameToID("test")
 })
 
 

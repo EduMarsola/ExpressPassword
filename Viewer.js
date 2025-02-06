@@ -1,10 +1,8 @@
 
-function GetPassword()
+async function GetPassword()
 {
-    let passwordText = "teste"
-    //document.getElementById("passwordLister").innerHTML += InsertPassword() + "<br>"
-    document.getElementById("passwordLister").innerHTML += fetch("no-cors", "http://localhost:1500")
-        .then(res => res.json()).then(data => console.log(data))
+    document.getElementById("passwordLister").innerHTML += await fetch("no-cors", "http://localhost:1500")
+    //.then(res => res.json()).then(data => console.log(data))
     
 }
 

@@ -17,11 +17,13 @@ class db{
     }
     async NameToID(userName)
     {
-        return await this.con.promise().query(`select userID from User_Pass where userName = ?`, userName)
+        let [reply] = await this.con.promise().query(`select userID from User_Pass where userName = "?";`, userName)
+        return reply
     }
     async List(userName)
     {
-        return await this.con.promise().query(`select passwords from Enc_Pass where userID = ?`, this.NameToID(userName))
+        let [reply] = await this.con.promise().query(`select passwords from Enc_Pass where userID = "?";`, this.NameToID(userName))
+        return reply
     }
     async IntegratePassword(userID, newPassword)
     {
