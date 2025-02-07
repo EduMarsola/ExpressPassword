@@ -5,10 +5,14 @@ const data = new db();
 const server = fastify()
 
 server.get('/', () =>{
-    return JSON.parse({ text: "deu bom"})
+    return ({ text: "deu bom"})
 })
-server.get('/list', async(reply) =>{
-    return reply.body = await data.NameToID("test")
+server.get('/list', () =>{
+    return data.List("test")
+})
+server.get('/name', () =>{
+    let userData = data.NameToID("test")
+    return userData
 })
 
 
