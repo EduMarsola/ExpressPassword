@@ -4,8 +4,8 @@ import db from './DBController.js'
 const data = new db();
 const server = fastify()
 
-server.get('/', () =>{
-    return ({ text: "deu bom"})
+server.get('/', async () =>{
+    return ({ "text": "deu bom"})
 })
 server.get('/list', () =>{
     return data.List("test")

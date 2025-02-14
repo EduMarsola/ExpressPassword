@@ -19,14 +19,14 @@ class db{
     {
         this.con.promise().query("use ExpressPassword")
         let [reply] = (await this.con.promise().query(`select userID from User_Pass where userName = ?;`, userName))
-        return reply[0]
+        return reply
     }
     async List(userName)
     {
-        this.con.promise().query("use ExpressPassword")
+        this.con.promise().query("use ExpressPassword;")
         let  id = this.NameToID(userName)
-        let [reply] = await this.con.promise().query(`select passwords from Enc_Pass where userID = ?;`, id)
-        return reply[0]
+        let [reply] = await this.con.promise().query("select passwords from Enc_Pass where userID = "+id+";")
+        return reply
     }
     async IntegratePassword(userID, newPassword)
     {
